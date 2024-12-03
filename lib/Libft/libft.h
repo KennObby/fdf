@@ -6,7 +6,7 @@
 /*   By: oilyine- <oleg.ilyine@student42.luxembour  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 10:27:54 by oilyine-          #+#    #+#             */
-/*   Updated: 2024/10/29 16:09:06 by oilyine-         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:00:57 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
 
 #endif

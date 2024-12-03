@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   parser_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oilyine- <oleg.ilyine@student42.luxembour  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 07:38:19 by oilyine-          #+#    #+#             */
-/*   Updated: 2024/12/01 07:40:06 by oilyine-         ###   ########.fr       */
+/*   Created: 2024/12/03 19:20:51 by oilyine-          #+#    #+#             */
+/*   Updated: 2024/12/03 19:54:23 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef PARSER_UTILS_H
+# define PARSER_UTILS_H
 
 # include "fdf.h"
 
 t_point	*create_point(int x, int y, int z);
 t_map	*init_map(int width, int height);
-void	error_exit(const char *message);
-void	ft_free_split(char **split);
+int		count_tokens(char **tokens);
+void	append_to_list(t_list **head, t_list *new_node);
+void	free_list(t_list *head);
+void	populate_map(t_map *map, t_list *head, t_env *env);
 
 #endif

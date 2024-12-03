@@ -16,8 +16,9 @@
 # include "fdf.h"
 
 t_env	*init_graphics(t_map *map);
-t_point	project_point(t_point point, t_transform transform);
-void	draw_wireframe(t_env *env);
 void	render(t_env *env);
+void	project_and_draw(t_env *env);
+void	draw_line(t_env *env, t_point p1, t_point p2);
+void	free_graphics(t_env *env);
 
 #endif

@@ -16,6 +16,15 @@
 # include "../lib/Libft/libft.h"
 # include "../lib/Libft/ft_printf.h"
 # include "../lib/Libft/get_next_line_bonus.h"
+# include "../lib/mlx/mlx.h"
+# include "../lib/mlx/mlx_int.h"
+# include "../inc/renderer.h"
+# include "../inc/utils.h"
+# include "../inc/draw_line.h"
+# include "../inc/parser.h"
+# include "../inc/parser_utils.h"
+# include "../inc/input_handler.h"
+# include "../inc/draw_line.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -23,7 +32,6 @@
 # include <unistd.h>
 # include <string.h>
 # include <stddef.h>
-# include <mlx.h>
 # include <math.h>
 
 typedef struct s_point

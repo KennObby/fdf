@@ -5,19 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oilyine- <oleg.ilyine@student42.luxembour  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 07:38:19 by oilyine-          #+#    #+#             */
-/*   Updated: 2024/12/01 07:40:06 by oilyine-         ###   ########.fr       */
+/*   Created: 2024/12/03 09:41:21 by oilyine-          #+#    #+#             */
+/*   Updated: 2024/12/03 09:44:50 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
-# include "fdf.h"
+# include "../../inc/fdf.h"
 
-t_point	*create_point(int x, int y, int z);
-t_map	*init_map(int width, int height);
-void	error_exit(const char *message);
 void	ft_free_split(char **split);
+void	error_exit(const char *message, t_env *env);
 
 #endif

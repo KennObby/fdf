@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   renderer_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oilyine- <oleg.ilyine@student42.luxembour  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 07:38:19 by oilyine-          #+#    #+#             */
-/*   Updated: 2024/12/01 07:40:06 by oilyine-         ###   ########.fr       */
+/*   Created: 2024/12/03 17:54:05 by oilyine-          #+#    #+#             */
+/*   Updated: 2024/12/03 18:08:42 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../../inc/fdf.h"
 
-# include "fdf.h"
-
-t_point	*create_point(int x, int y, int z);
-t_map	*init_map(int width, int height);
-void	error_exit(const char *message);
-void	ft_free_split(char **split);
-
-#endif
+void	free_graphics(t_env *env)
+{
+	if (env == NULL)
+		return ;
+	if (env->win != NULL)
+		mlx_destroy_window(env->mlx, env->win);
+	if (env->mlx != NULL)
+	{
+		mlx_destroy_display(env->mlx);
+		free(env.mlx);
+	}
+	free(env);
+}

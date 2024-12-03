@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   draw_line.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oilyine- <oleg.ilyine@student42.luxembour  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 07:38:19 by oilyine-          #+#    #+#             */
-/*   Updated: 2024/12/01 07:40:06 by oilyine-         ###   ########.fr       */
+/*   Created: 2024/12/03 16:20:40 by oilyine-          #+#    #+#             */
+/*   Updated: 2024/12/03 16:25:53 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef DRAW_LINE_H
+# define DRAW_LINE_H
 
 # include "fdf.h"
+# include "renderer.h"
 
-t_point	*create_point(int x, int y, int z);
-t_map	*init_map(int width, int height);
-void	error_exit(const char *message);
-void	ft_free_split(char **split);
+typedef struct s_bresenham
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	x;
+	int	y;
+}				t_bresenham;
+
+void	draw_line(t_env, t_point p1, t_point p2);
+void	init_bresenham(t_point p1, t_point p2, t_bresenham *b);
+void	step_bresenham(t_bresenham *b);
+void	plot_pixel(t_env *env, int x, int y, int color);
 
 #endif

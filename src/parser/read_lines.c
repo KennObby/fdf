@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_handler.h                                    :+:      :+:    :+:   */
+/*   read_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oilyine- <oleg.ilyine@student42.luxembour  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 07:36:12 by oilyine-          #+#    #+#             */
-/*   Updated: 2024/12/01 07:37:56 by oilyine-         ###   ########.fr       */
+/*   Created: 2024/12/03 20:41:18 by oilyine-          #+#    #+#             */
+/*   Updated: 2024/12/03 21:06:01 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INPUT_HANDLER_H
-# define INPUT_HANDLER_H
+#include "../../inc/fdf.h"
+#include "../../inc/parser_utils.h"
 
-# include "fdf.h"
-
-int		handle_keypress(int key, t_env *env);
-int		handle_mouse(int button, int x, int y, t_env *env);
-void	setup_event_hooks(t_env *env);
-
-typedef enum e_keys
+t_list	*read_lines(int fd, t_env *env)
 {
-	KEY_ESC = 53,
-	KEY_PLUS = 69,
-	KEY_MINUS = 78,
-	KEY_LEFT = 123,
-	KEY_RIGHT = 124,
-	KEY_DOWN = 125,
-	KEY_UP = 126,
-	KEY_ROTATE_LEFT = 0,
-	KEY_ROTATE_RIGHT = 2
-}			t_keys;
+	t_list	*head;
+	t_list	*new_node;
+	char	*line;
 
-#endif
+	head = NULL;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		new_node = ft_lstnew(line);
+		if (new_node == NULL)
+			error_exit("Memory allocation failed for list node", env);
+		append_to_list(&head, new_node);
+	}
+	return (head);
+}

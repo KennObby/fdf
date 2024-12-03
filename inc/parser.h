@@ -16,6 +16,8 @@
 # include "fdf.h"
 
 t_map	*parse_file(const char *file_path);
-void	free_map(t_map *map);
+int		open_file(const char *file_path, t_env *env);
+t_list	*read_lines(int fd, t_env *env);
+void	count_dimensions(t_list *head, int *height, int *max_width);
 
 #endif
