@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../inc/fdf.h"
+#include "../../inc/renderer.h"
 
 int	init_window(t_env *env)
 {
@@ -19,7 +20,7 @@ int	init_window(t_env *env)
 	{
 		return (-1);
 	}
-	env->win = mlx_new_window(env->mlx, 800, 600, "FDF");
+	env->win = mlx_new_window(env->mlx, 1200, 800, "FDF");
 	if (env->win == NULL)
 	{
 		mlx_destroy_display(env->mlx);
@@ -30,7 +31,7 @@ int	init_window(t_env *env)
 	return (0);
 }
 
-t_env	*init_env(t_map map)
+t_env	*init_env(t_map *map)
 {
 	t_env	*env;
 

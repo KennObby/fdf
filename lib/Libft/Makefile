@@ -54,12 +54,11 @@ PRINTF = ft_printf.c 		\
 				ft_puthex_lower.c 		\
 				ft_puthex_upper.c 		
 
-OBJS = ${SRCS:.c=.o}
-OBJSB = ${SRCSB:.c=.o}
-OBJS_GNL = ${GNL:.c=.o}
-OBJS_PTF = ${PRINTF:.c=.o}
+ALL_SRCS = $(SRCS) $(SRCSB) $(GNL) $(PRINTF)
 
-NAME = libft.a
+ALL_OBJS = $(ALL_SRCS:.c=.o)
+
+NAME = libft.a 
 
 AR = ar rcs
 
@@ -69,19 +68,19 @@ CFLAGS 		= -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS) $(OBJSB)
-	$(OBJS_GNL) $(OBJS_PTF)
+$(NAME): $(ALL_OBJS)
+	@$(AR) $(NAME) $(ALL_OBJS)
+	@echo "Compilation complete"
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) $(OBJSB) 
-	$(OBJS_GNL) $(OBJS_PTF)
+	@$(RM) $(ALL_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "Clean complete"
 
 re: fclean all
 

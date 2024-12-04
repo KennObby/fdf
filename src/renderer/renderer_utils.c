@@ -21,7 +21,7 @@ void	free_graphics(t_env *env)
 	if (env->mlx != NULL)
 	{
 		mlx_destroy_display(env->mlx);
-		free(env.mlx);
+		free(env->mlx);
 	}
 	free(env);
 }

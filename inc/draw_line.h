@@ -13,7 +13,7 @@
 #ifndef DRAW_LINE_H
 # define DRAW_LINE_H
 
-# include "fdf.h"
+# include "types.h"
 # include "renderer.h"
 
 typedef struct s_bresenham
@@ -27,7 +27,7 @@ typedef struct s_bresenham
 	int	y;
 }				t_bresenham;
 
-void	draw_line(t_env, t_point p1, t_point p2);
+void	draw_line(t_env *env, t_point p1, t_point p2);
 void	init_bresenham(t_point p1, t_point p2, t_bresenham *b);
 void	step_bresenham(t_bresenham *b);
 void	plot_pixel(t_env *env, int x, int y, int color);

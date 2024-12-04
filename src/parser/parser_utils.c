@@ -11,23 +11,17 @@
 /* ************************************************************************** */
 
 #include "../../inc/fdf.h"
-#include <stdlib.h>
-#include <string.h>
-#include "../../inc/parser_utils.h"
 
-t_point	*create_point(int x, int y, int z)
+t_point	create_point(int x, int y, int z)
 {
-	t_point	*point;
+	t_point	point;
 
-	point = (t_point *)malloc(sizeof(t_point));
-	if (point == NULL)
-		return (NULL);
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->color = 0xFFFFFF;
-	point->x_proj = 0.0;
-	point->y_proj = 0.0;
+	point.x = x;
+	point.y = y;
+	point.z = z;
+	point.color = 0xFFFFFF;
+	point.x_proj = 0.0;
+	point.y_proj = 0.0;
 	return (point);
 }
 
@@ -48,6 +42,7 @@ t_map	*init_map(int width, int height)
 		free(map);
 		return (NULL);
 	}
+	i = 0;
 	while (i < height)
 	{
 		map->points[i] = (t_point *)ft_calloc(width, sizeof(t_point));

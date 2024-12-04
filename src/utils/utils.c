@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include "../../lib/Libft/libft.h"
-#include <stddef.h>
-#include <stdlib.h>
+#include "../../inc/fdf.h"
 
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {
@@ -58,7 +55,7 @@ void	error_exit(const char *message, t_env *env)
 	exit(EXIT_FAILURE);
 }
 
-void ft_free_split(char **split)
+void	ft_free_split(char **split)
 {
 	int	i;
 

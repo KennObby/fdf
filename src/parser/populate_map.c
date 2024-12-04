@@ -12,10 +12,10 @@
 
 #include "../../inc/fdf.h"
 
-void	populate_map(t_map *map, t_list *head, int *env)
+void	populate_map(t_map *map, t_list *head, t_env *env)
 {
 	t_list	*current;
-	t_point	*point;
+	t_point	point;
 	char	**tokens;
 	int		x;
 	int		y;
@@ -35,19 +35,13 @@ void	populate_map(t_map *map, t_list *head, int *env)
 			{
 				z = ft_atoi(tokens[x]);
 				point = create_point(x, y, z);
-				if (point == NULL)
-					error_exit("Memory allocation failed for point", env);
-				map->points[y][x] = *point;
-				free(point);
 			}
 			else
 			{
+				z = 0;
 				point = create_point(x, y, z);
-				if (point == NULL)
-					error_exit("Memory allocation failed for point", env);
-				map->points[y][x] = *point;
-				free(point);
 			}
+			map->points[y][x] = point;
 			x++;
 		}
 		ft_free_split(tokens);

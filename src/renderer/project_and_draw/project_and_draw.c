@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../../inc/fdf.h"
-#include "../../../inc/draw_line.h"
-#include <math.h>
 
 void	project_point(t_env *env, t_point *point)
 {
@@ -23,6 +21,8 @@ void	project_point(t_env *env, t_point *point)
 	angle = 0.523599;
 	x_iso = (point->x - point->y) * cos(angle);
 	y_iso = (point->x + point->y) * sin(angle) - point->z;
+	point->x_proj = x_iso * env->transform.scale + env->transform.translate_x;
+	point->y_proj = y_iso * env->transform.scale + env->transform.translate_y;
 }
 
 void	draw_neighbors(t_env *env, t_point *point)

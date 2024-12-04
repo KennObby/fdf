@@ -29,7 +29,7 @@ void	free_map(t_map *map)
 	free(map);
 }
 
-t_map	*parse_file(const char *file_path)
+t_map	*parse_file(const char *file_path, t_env *env)
 {
 	int		fd;
 	t_list	*lines;
@@ -42,8 +42,8 @@ t_map	*parse_file(const char *file_path)
 	close(fd);
 	count_dimensions(lines, &height, &max_width);
 	map = init_map(max_width, height);
-	if (map == NULL)
-		error_exit("Memory allocation failed for map", env);
+	if (height == 0 || max_width == 0)
+		error_exit("Map file is empty or invalid", env);
 	populate_map(map, lines, env);
 	free_list(lines);
 	return (map);

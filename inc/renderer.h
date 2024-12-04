@@ -13,12 +13,12 @@
 #ifndef RENDERER_H
 # define RENDERER_H
 
-# include "fdf.h"
+# include "types.h"
 
-t_env	*init_graphics(t_map *map);
+t_env	*init_env(t_map *map);
+int		init_window(t_env *env);
 void	render(t_env *env);
 void	project_and_draw(t_env *env);
-void	draw_line(t_env *env, t_point p1, t_point p2);
 void	free_graphics(t_env *env);
 
 #endif

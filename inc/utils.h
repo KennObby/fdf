@@ -13,11 +13,10 @@
 #ifndef UTILS_H
 # define UTILS_H
 
-# include "fdf.h"
+# include "types.h"
 
-t_point	*create_point(int x, int y, int z);
 t_map	*init_map(int width, int height);
-void	error_exit(const char *message);
+void	error_exit(const char *message, t_env *env);
 void	ft_free_split(char **split);
 
 #endif

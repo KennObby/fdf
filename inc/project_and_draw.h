@@ -13,7 +13,7 @@
 #ifndef PROJECT_AND_DRAW_H
 # define PROJECT_AND_DRAW_H
 
-# include "fdf.h"
+# include "types.h"
 
 void	project_and_draw(int *env);
 void	project_point(t_env *env, t_point *point);

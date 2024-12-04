@@ -11,10 +11,8 @@
 /* ************************************************************************** */
 
 #include "../../inc/fdf.h"
-#include <fcntl.h>
-#include <unistd.h>
 
-int	open_file(const char *file_path, int *env)
+int	open_file(const char *file_path, t_env *env)
 {
 	int	fd;
 
@@ -43,18 +41,4 @@ void	count_dimensions(t_list *head, int *height, int *max_width)
 		ft_free_split(tokens);
 		current = current->next;
 	}
-}
-
-t_map	*parse_file(const char *file_path, t_env *env)
-{
-	int		fd;
-	t_list	*lines;
-	t_map	*map;
-	int		height;
-	int		max_width;
-
-	fd = open_file(file_path, env);
-	lines = read_lines(fd, env);
-	close(fd);
-	count_dimensions(lines);
 }

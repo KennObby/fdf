@@ -33,7 +33,7 @@ static int	count_words(const char *s, char c)
 	return (nbr_words);
 }
 
-void	ft_free_split(char **tab, int n)
+void	ft_free(char **tab, int n)
 {
 	int	i;
 
@@ -94,7 +94,7 @@ char	**ft_split(const char *s, char c)
 		find_next_word(s, c, &start, &len);
 		tab[i] = allocate_words(s, start, len);
 		if (!tab[i])
-			ft_free_split(tab, i);
+			ft_free(tab, i);
 		start += len;
 		i++;
 	}
