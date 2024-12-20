@@ -17,13 +17,48 @@
 
 typedef struct s_point
 {
-	int		x;
-	int		y;
-	int		z;
-	int		color;
-	float	x_proj;
-	float	y_proj;
+	int			x;
+	int			y;
+	int			z;
+	uint32_t	color;
+	double		x_iso;
+	double		y_iso;
+	double		z_rot;
+	double		x_proj;
+	double		y_proj;
 }				t_point;
+
+typedef struct s_sincos_axis
+{
+	double	cx;
+	double	sx;
+	double	cy;
+	double	sy;
+	double	cz;
+	double	sz;
+}				t_sincos_axis;
+
+typedef struct s_image
+{
+	void	*img_ptr;
+	void	*data_addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}				t_image;
+
+typedef struct s_range
+{
+	double		min_z;
+	double		max_z;
+}				t_range;
+
+typedef struct s_mouse
+{
+	int		is_dragging;
+	int		last_x;
+	int		last_y;
+}				t_mouse;
 
 typedef struct s_map
 {
@@ -34,18 +69,23 @@ typedef struct s_map
 
 typedef struct s_transform
 {
-	float	scale;
-	float	rotation_x;
-	float	rotation_y;
-	float	rotation_z;
-	float	translate_x;
-	float	translate_y;
+	double			scale;
+	double			z_scale;
+	double			zoom;
+	double			rotation_x;
+	double			rotation_y;
+	double			rotation_z;
+	double			translate_x;
+	double			translate_y;
+	t_sincos_axis	sincos;
 }				t_transform;
 
 typedef struct s_env
 {
 	void		*mlx;
 	void		*win;
+	t_mouse		mouse;
+	t_image		*image;
 	t_map		*map;
 	t_transform	transform;
 }				t_env;

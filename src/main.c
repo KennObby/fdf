@@ -11,35 +11,40 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
 	t_env	*env;
 	t_map	*map;
+	t_list	*lines;
 
 	if (ac != 2)
-	{
-		write(2, "Usage: ./fdf <map_file.fdf>\n", 26);
-		return (EXIT_FAILURE);
-	}
-	map = parse_file(av[1], NULL);
-	if (map == NULL)
+		error_exit("Usage: ./fdf <map_file.fdf>\n", NULL);
+	map = parse_file(av[1], &lines, NULL);
+	if (!map)
 	{
 		free(map);
-		error_exit("Failed to parse the map", NULL);
+		error_exit("Failed to parse the map file", NULL);
 	}
-	env = init_env(map);
-	if (env == NULL)
-		error_exit("Memory allocation failed for env", NULL);
+	env = init_env(NULL);
+	if (!env)
+		error_exit("Failed to parse the map file", NULL);
 	env->map = map;
+	center_map(env, map);
 	if (init_window(env) == -1)
 	{
 		free_map(map);
 		free(env);
-		error_exit("Failed to initialize graphics", NULL);
+		error_exit("Error: Failed to initialize window", NULL);
 	}
+	env->image = init_image(env);
+	if (!env->image)
+		error_exit("Error: Failed to initialize image", NULL);
+	compute_sincos(&env->transform);
 	setup_event_hooks(env);
 	render(env);
 	mlx_loop(env->mlx);
+	free_env(env);
 	return (EXIT_SUCCESS);
 }

@@ -20,14 +20,19 @@
 # include "../lib/mlx/mlx_int.h"
 # include "types.h"
 # include "renderer.h"
+# include "project_point.h"
+# include "project_and_draw.h"
 # include "utils.h"
 # include "draw_line.h"
 # include "parser.h"
 # include "parser_utils.h"
+# include "mouse_handler.h"
 # include "input_handler.h"
 # include "draw_line.h"
+# include "free.h"
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdint.h>
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <unistd.h>
@@ -35,5 +40,8 @@
 # include <stddef.h>
 # include <time.h>
 # include <math.h>
+
+# define WIDTH 1920
+# define HEIGHT 1080
 
 #endif

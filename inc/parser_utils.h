@@ -13,9 +13,9 @@
 #ifndef PARSER_UTILS_H
 # define PARSER_UTILS_H
 
-# include "types.h"
+# include "fdf.h"
 
-t_point	create_point(int x, int y, int z);
+t_point	create_point(int x, int y, int z, uint32_t color);
 t_map	*init_map(int width, int height);
 int		count_tokens(char **tokens);
 void	append_to_list(t_list **head, t_list *new_node);

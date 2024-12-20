@@ -13,10 +13,13 @@
 #ifndef PROJECT_AND_DRAW_H
 # define PROJECT_AND_DRAW_H
 
+# include "fdf.h"
 # include "types.h"
 
-void	project_and_draw(int *env);
-void	project_point(t_env *env, t_point *point);
+t_range	get_z_range(t_map *map);
+double	compute_scale(t_range range, t_env *env);
+void	project_and_draw(t_env *env);
+void	center_map(t_env *env, t_map *map);
 void	draw_neighbors(t_env *env, t_point *point);
 
 #endif

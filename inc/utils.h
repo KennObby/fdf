@@ -14,8 +14,9 @@
 # define UTILS_H
 
 # include "types.h"
+# include "fdf.h"
 
-t_map	*init_map(int width, int height);
+void	display_info(t_env *env, char *info);
 void	error_exit(const char *message, t_env *env);
 void	ft_free_split(char **split);
 

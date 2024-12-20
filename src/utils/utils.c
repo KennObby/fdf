@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oilyine- <oleg.ilyine@student42.luxembour  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:45:34 by oilyine-          #+#    #+#             */
-/*   Updated: 2024/12/03 09:49:57 by oilyine-         ###   ########.fr       */
+/*   Updated: 2024/12/18 01:05:37 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fdf.h"
 
-void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
+void	display_info(t_env *env, char *info)
 {
-	void	*new_ptr;
-	size_t	copied_size;
+	int			x;
+	int			y;
+	uint32_t	color;
 
-	if (ptr == NULL)
-		return (malloc(new_size));
-	if (new_size == 0)
-	{
-		free(ptr);
-		return (NULL);
-	}
-	new_ptr = malloc(new_size);
-	if (new_ptr == NULL)
-		return (NULL);
-	if (old_size < new_size)
-		copied_size = old_size;
-	else
-		copied_size = new_size;
-	ft_memcpy(new_ptr, ptr, copied_size);
-	free(ptr);
-	return (new_ptr);
+	x = 10;
+	y = 10;
+	color = 0xFFFF00;
+	mlx_string_put(env->mlx, env->win, x, y, color, info);
 }
 
 void	error_exit(const char *message, t_env *env)
@@ -49,8 +37,8 @@ void	error_exit(const char *message, t_env *env)
 	write(2, "\n", 1);
 	if (env != NULL)
 	{
-		free(env->map);
-		free_graphics(env);
+		free_map(env->map);
+		free_env(env);
 	}
 	exit(EXIT_FAILURE);
 }

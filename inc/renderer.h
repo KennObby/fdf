@@ -15,10 +15,10 @@
 
 # include "types.h"
 
+void	clear_image(t_env *env, uint32_t color);
+t_image	*init_image(t_env *env);
 t_env	*init_env(t_map *map);
 int		init_window(t_env *env);
 void	render(t_env *env);
-void	project_and_draw(t_env *env);
-void	free_graphics(t_env *env);
 
 #endif
