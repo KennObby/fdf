@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../inc/fdf.h"
+#include <stdint.h>
 #include <stdlib.h>
 
 /**
@@ -75,6 +76,20 @@ void	step_bresenham(t_bresenham *b)
 		b->err = b->err + b->dx;
 		b->y = b->y + b->sy;
 	}
+}
+
+uint32_t	get_color(int z)
+{
+	if (z < -10)
+		return (COLOR_BLUE);
+	else if (z < 0)
+		return (COLOR_CYAN);
+	else if (z < 10)
+		return (COLOR_GREEN);
+	else if (z < 20)
+		return (COLOR_YELLOW);
+	else
+		return (COLOR_RED);
 }
 
 void	my_pixel_put(t_env *env, int x, int y, uint32_t color)

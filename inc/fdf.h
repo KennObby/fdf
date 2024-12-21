@@ -26,6 +26,7 @@
 # include "draw_line.h"
 # include "parser.h"
 # include "parser_utils.h"
+# include "populate.h"
 # include "mouse_handler.h"
 # include "input_handler.h"
 # include "draw_line.h"

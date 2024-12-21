@@ -28,6 +28,24 @@ typedef struct s_point
 	double		y_proj;
 }				t_point;
 
+typedef struct s_button
+{
+	int			x_start;
+	int			y_start;
+	int			width;
+	int			height;
+	uint32_t	color;
+	void		(*action)(struct t_env *env);
+}				t_button;
+
+typedef struct s_ui
+{
+	void		*menu_img_ptr;
+	int			menu_width;
+	int			menu_height;
+	t_button	button[3];
+}				t_ui;
+
 typedef struct s_sincos_axis
 {
 	double	cx;
@@ -88,6 +106,7 @@ typedef struct s_env
 	t_image		*image;
 	t_map		*map;
 	t_transform	transform;
+	t_ui		ui;
 }				t_env;
 
 #endif

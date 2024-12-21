@@ -27,9 +27,16 @@ typedef struct s_bresenham
 	int	y;
 }				t_bresenham;
 
-void	draw_line(t_env *env, t_point p1, t_point p2);
-void	init_bresenham(t_point p1, t_point p2, t_bresenham *b);
-void	step_bresenham(t_bresenham *b);
-void	my_pixel_put(t_env *env, int x, int y, uint32_t color);
+uint32_t	get_color(int z);
+void		draw_line(t_env *env, t_point p1, t_point p2);
+void		init_bresenham(t_point p1, t_point p2, t_bresenham *b);
+void		step_bresenham(t_bresenham *b);
+void		my_pixel_put(t_env *env, int x, int y, uint32_t color);
+
+# define COLOR_BLUE 0x0000FF
+# define COLOR_CYAN 0x00FFFF
+# define COLOR_GREEN 0x00FF00
+# define COLOR_YELLOW 0xFFFF00
+# define COLOR_RED 0xFF0000
 
 #endif
